@@ -21,7 +21,7 @@ vagrant_cpus: 2
 
 # Set this to false if you are using a different site deployment strategy and
 # would like to configure 'vagrant_synced_folders' and 'apache_vhosts' manually.
-build_from_makefile: false
+build_from_makefile: true
 drush_makefile_path: /vagrant/backdrop.make.yml
 
 # Settings for building a Backdrop site from a makefile (if 'build_from_makefile'
