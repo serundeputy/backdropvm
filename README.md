@@ -51,7 +51,7 @@ Note for Linux users: *If NFS is not already installed on your host, you will ne
   2. Make copies of both of the `example.*` files, and modify to your liking:
     - Copy `example.backdrop.make.yml` to `backdrop.make.yml`.
     - Copy `example.config.yml` to `config.yml`.
-  3. Create a local directory where Drupal will be installed and configure the path to that directory in `config.yml` (`local_path`, inside `vagrant_synced_folders`).
+  3. Create a local directory where Backdrop will be installed and configure the path to that directory in `config.yml` (`local_path`, inside `vagrant_synced_folders`).
   4. Open Terminal, cd to this directory (containing the `Vagrantfile` and this README file).
   5. [Mac/Linux only] Install Ansible Galaxy roles required for this VM: `$ sudo ansible-galaxy install -r requirements.txt`
   6. Type in `vagrant up`, and let Vagrant do its magic.
@@ -60,7 +60,7 @@ Note: *If there are any errors during the course of running `vagrant up`, and it
 
 ### 3 - Configure your host machine to access the VM.
 
-  1. [Edit your hosts file](http://www.rackspace.com/knowledge_center/article/how-do-i-modify-my-hosts-file), adding the line `192.168.88.111  drupaltest.dev` so you can connect to the VM. (Alternatively, you can install a Vagrant plugin to automatically add and remove the entry from your hosts file; run `vagrant plugin install vagrant-hostsupdater`).
+  1. [Edit your hosts file](http://www.rackspace.com/knowledge_center/article/how-do-i-modify-my-hosts-file), adding the line `192.168.88.111  backdrop.dev` so you can connect to the VM. (Alternatively, you can install a Vagrant plugin to automatically add and remove the entry from your hosts file; run `vagrant plugin install vagrant-hostsupdater`).
   2. Open your browser and access [http://backdrop.dev/](http://backdrop.dev/). This will bring you to the Backdrop installer.
 
 ## Extra software/utilities
