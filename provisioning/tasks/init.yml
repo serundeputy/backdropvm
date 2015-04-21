@@ -1,0 +1,23 @@
+---
+- name: Update apt cache if needed.
+  apt: update_cache=yes cache_valid_time=86400
+
+- name: Get software for Python-based control.
+  apt: "pkg={{ item }} state=installed"
+  with_items:
+  - curl
+  - python-apt
+  - python-pycurl
+  - build-essential
+
+- name: Disable the firewall (since this is for local dev only).
+  service: name=ufw state=stopped
+
+- name: Install postfix so Drupal can send emails.
+  apt: pkg=postfix state=installed
+
+- name: Install zip and unzip
+  apt: "pkg={{ item }} state=installed"
+  with_items:
+  - zip
+  - unzip

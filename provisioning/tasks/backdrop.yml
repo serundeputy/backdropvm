@@ -1,0 +1,21 @@
+---
+- name: Check if Backdrop is already set up.
+  stat: "path={{ backdrop_core_path }}/index.php"
+  register: backdrop_site
+
+#- name: Generate Backdrop site with drush makefile.
+#  command: "drush make -y {{ backdrop_makefile_path }} {{ backdrop_core_path }}"
+#  when: backdrop_site.stat.exists == false
+#  sudo: no
+#
+- name: Install Backdrop 1.x.
+  git: >
+    repo=https://github.com/backdrop/backdrop.git
+    dest={{ backdrop_core_path }}
+
+#- name: Install configured modules with drush.
+#  command: >
+#    drush en -y {{ drupal_enable_modules | join(" ") }}
+#    chdir={{ drupal_core_path }}
+#  when: backdrop_site.stat.exists == false
+#  sudo: no

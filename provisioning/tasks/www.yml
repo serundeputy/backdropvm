@@ -1,0 +1,15 @@
+---
+# Originally I tried adding to the www group, but because Ansible uses one SSH
+# connection, that broke the initial provisioning, since groups aren't refreshed
+# without a new session or log off/log on.
+- name: Ensure admin group exists.
+  group: name=admin state=present
+
+- name: Ensure vagrant user is in admin group.
+  user: "name={{ vagrant_user }} append=yes groups=admin"
+
+- name: Remove default virtualhost file.
+  file:
+    path: /etc/apache2/sites-enabled/000-default.conf
+    state: absent
+  notify: restart webserver

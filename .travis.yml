@@ -1,0 +1,27 @@
+---
+language: python
+python: "2.7"
+
+install:
+  # Install Ansible.
+  - pip install ansible
+
+  # Add ansible.cfg to set local roles path.
+  - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
+
+script:
+  # Copy example files into place.
+  - cp example.config.yml config.yml
+  - cp example.drupal.make.yml drupal.make.yml
+
+  # Make sure Ansible requirements install correctly.
+  - 'ansible-galaxy install -r requirements.txt'
+
+  # Run Ansible's syntax and playbook check on the main playbook.
+  - 'ansible-playbook -i "localhost," -c local provisioning/playbook.yml --syntax-check'
+
+  # Check the config file and drupal make file YAML syntax.
+  - >
+    python -c "import yaml; yaml.load( open('example.config.yml', 'r'), Loader=yaml.CLoader  )"
+  - >
+    python -c "import yaml; yaml.load( open('example.drupal.make.yml', 'r'), Loader=yaml.CLoader  )"

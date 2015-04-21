@@ -1,0 +1,16 @@
+---
+api: 2
+
+# Basic Drush Make file for Backdrop. Be sure to update the backdrop_major_version
+# variable inside config.yml if you change the major version in this file.
+
+# Backdrop core (major version, e.g. 1.x).
+core: "1.x"
+
+projects:
+
+  backdrop:
+    type: "core"
+    version: "1.06"
+
+  devel: "1.x-dev"
